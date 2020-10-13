@@ -1,7 +1,23 @@
+import { getData } from "./getData.js"
+import {catalog} from './catalog.js'
 
 
 const generateCatalog = () => {
-    const catalog = `
+
+    
+
+    getData.catalog(data => {
+
+        let catalogList = ''
+
+        data.forEach(item => {
+
+            catalogList += `
+                        <li class="catalog-list__item"><a href="goods.html?cat=${item}">${item}</a></li>        
+        `
+        })
+
+        const catalogHTML = `
     <div class="catalog">
     <button type="button" class="btn btn-close catalog-btn" id="hnf-menu-close-btn" aria-expanded="true"
             title="Закрыть меню" aria-label="Закрыть меню">
@@ -13,17 +29,17 @@ const generateCatalog = () => {
     </button>
     <h2>Каталог</h2>
     <ul class="catalog-list">
-        <li class="catalog-list__item active"><a href="goods.html?cat=Мебель">Мебель</a></li>
-        <li class="catalog-list__item"><a href="goods.html?cat=Кухня">Кухня</a></li>
-        <li class="catalog-list__item"><a href="goods.html?cat=Текстиль">Текстиль</a></li>
-        <li class="catalog-list__item"><a href="goods.html?cat=Освещение">Освещение</a></li>
-        <li class="catalog-list__item"><a href="goods.html?cat=Декор">Декор</a></li>
+            ${catalogList}
     </ul>
 
 
 </div>
     `
-    document.body.insertAdjacentHTML('afterbegin', catalog)
+    document.body.insertAdjacentHTML('afterbegin', catalogHTML)
+    catalog()
+    })
+
+    
 }
 
 export default generateCatalog

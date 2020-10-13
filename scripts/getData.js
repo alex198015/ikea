@@ -57,15 +57,29 @@ export const getData = {
             cb(result) 
         })
     },
-    catalog() {
+    catalog(cb) {
         this.get((data) => {
+            const result = data.reduce((arr, item) => {
+              if(!arr.includes(item.category)){
+                   arr.push(item.category)
+              }
+               
+
+                return arr
+            },[])
             
             cb(result)
         })
     }, 
-    subCatalog() {
+    subCatalog(value, cb) {
         this.get((data) => {
-            
+            const result = data.filter(item => item.category === value)
+                .reduce((arr, item) => {
+                    if(!arr.includes(item.subcategory)){
+                        arr.push(item.subcategory)
+                    }
+                    return arr
+                },[])
             cb(result)
         })
     }
