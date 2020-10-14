@@ -74,7 +74,7 @@ const generateGoodsPage = () => {
            getData.search(value, generateCards)
            mainHeader.textContent = `Поиск: ${value}`
         } else if(prop === 'wishlist') {
-            getData.wishList(user.wishlist, generateCards)
+            getData.wishList(user.wishList, generateCards)
             mainHeader.textContent = `Список желаний`
         } else if (prop === 'cat' || prop === 'subcat'){
             getData.category(prop, value, generateCards)
